@@ -24,7 +24,7 @@ def reply_text(reply_token, text):
           "replyToken":reply_token,
           "messages":[
                 {
-                    "type": text,
+                    "type":"text",
                     "text": reply
                 }
             ]
