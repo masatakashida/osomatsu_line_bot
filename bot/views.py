@@ -19,17 +19,17 @@ def index(request):
     return HttpResponse("This is bot api.")
 
 def reply_text(reply_token, text):
-    reply = random.choice(osomatsu_serif)
+    #reply = random.choice(osomatsu_serif)
     payload = {
           "replyToken":reply_token,
           "messages":[
                 {
                     "type":"text",
-                    "text": "こんにちは"#reply
+                    "text": text#reply
                 }
             ]
     }
-
+    
     requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
     return reply
 
