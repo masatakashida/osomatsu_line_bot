@@ -31,7 +31,8 @@ def reply_text(reply_token, text):
             ]
     }
     
-    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
+    #requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
+    requests.post(REPLY_ENDPOINT, headers=HEADER, data={"events":[{"replyToken":"012345","message":{"type":"text","text":"こんにちは"}}]})
     return reply
 
 def callback(request):
@@ -44,4 +45,4 @@ def callback(request):
         if message_type == 'text':
             text = e['message']['text']    # 受信メッセージの取得
             reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
-    #return HttpResponse(reply)  # テスト用
+    return HttpResponse(reply)  # テスト用
