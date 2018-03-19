@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from load_serif import osomatsu_serif  # 先ほどのおそ松のセリフ一覧をimport
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
+ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 HEADER = {
     "Content-Type": "application/json",
     "Authorization": "Bearer " + ACCESS_TOKEN
