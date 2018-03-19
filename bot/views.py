@@ -25,7 +25,7 @@ def reply_text(reply_token, text):
           "messages":[
                 {
                     "type":"text",
-                    "text": reply
+                    "text": "こんにちは"#reply
                 }
             ]
     }
