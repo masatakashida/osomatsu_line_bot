@@ -10,10 +10,10 @@ from django.http import HttpResponse
 from load_serif import osomatsu_serif  # 先ほどのおそ松のセリフ一覧をimport
                                                                 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
-channel access token = 'ufPaV2RYTu8GHaNFJKGlWXL4fON5uKyhiulyOk7sT57wtVci1HjUQaPr0UUWjk8ktnpVlEP4qyheNcF3I6n7HIeQTTRiAzs2xTC84ir5rC+zdwknS9UjDXD5ARAWKHohRpbyaDkygicvmlRTWsAJhQdB04t89/1O/w1cDnyilFU='
+channel_access_token = 'ufPaV2RYTu8GHaNFJKGlWXL4fON5uKyhiulyOk7sT57wtVci1HjUQaPr0UUWjk8ktnpVlEP4qyheNcF3I6n7HIeQTTRiAzs2xTC84ir5rC+zdwknS9UjDXD5ARAWKHohRpbyaDkygicvmlRTWsAJhQdB04t89/1O/w1cDnyilFU='
 HEADER = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer {channel access token}"
+    "Authorization": "Bearer {channel_access_token}"
 }
 
 def index(request):
