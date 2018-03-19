@@ -31,7 +31,7 @@ def reply_text(reply_token, text):
             ]
     }
     
-    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
+    reply = requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
     return reply
 
 def callback(request):
