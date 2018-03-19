@@ -30,9 +30,12 @@ def reply_text(reply_token, text):
                 }
             ]
     }
+
+    data_json = simplejson.dumps({"replyToken":reply_token,"messages":[{"type":"text","text": reply}]})
+    payload = {'json_payload': data_json}
     
     #requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
-    requests.post(REPLY_ENDPOINT, headers=HEADER, data={"events":[{"replyToken":"012345","message":{"type":"text","text":"こんにちは"}}]})
+    requests.post(REPLY_ENDPOINT, headers=HEADER, data=payload)
     return reply
 
 def callback(request):
