@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-import os
 import json
 import random
 import requests
@@ -10,10 +9,10 @@ from django.http import HttpResponse
 from load_serif import osomatsu_serif  # 先ほどのおそ松のセリフ一覧をimport
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
-ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+ACCESS_TOKEN = os.environ['LINE_ACCESS_TOKEN']
 HEADER = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer {ACCESS_TOKEN}"
+    "Authorization": "Bearer " + ACCESS_TOKEN
 }
 
 def index(request):
