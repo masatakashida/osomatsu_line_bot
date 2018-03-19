@@ -6,7 +6,7 @@ import requests
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .load_serif import osomatsu_serif  # 先ほどのおそ松のセリフ一覧をimport
+from load_serif import osomatsu_serif  # 先ほどのおそ松のセリフ一覧をimport
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = 'OwPdf1Qoa5q4CekStJTiLTf6U7pGxwXp5dVPmPwDz5UMHzHHRCIHiUZe7E1X2xqY3CRAfIgAisAOGXPb2ENV/ufixWCrYYkwrgzHbcz+4AznueulKAN+1KjC5c1GTZbf4/mba4N+YYWw2L5Oqe9mxAdB04t89/1O/w1cDnyilFU='
