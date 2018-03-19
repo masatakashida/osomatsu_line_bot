@@ -13,7 +13,7 @@ REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 HEADER = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer " + ACCESS_TOKEN
+    "Authorization": "Bearer {ACCESS_TOKEN}"
 }
 
 def index(request):
