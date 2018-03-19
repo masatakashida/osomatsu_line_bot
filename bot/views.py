@@ -19,7 +19,7 @@ def index(request):
     return HttpResponse("This is bot api.")
 
 def reply_text(reply_token, text):
-    #reply = random.choice(osomatsu_serif)
+    reply = random.choice(osomatsu_serif)
     payload = {
           "replyToken":reply_token,
           "messages":[
