@@ -44,4 +44,4 @@ def callback(request):
         if message_type == 'text':
             text = e['message']['text']    # 受信メッセージの取得
             reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
-    return HttpResponse(reply)  # テスト用
+    #return HttpResponse(reply)  # テスト用
