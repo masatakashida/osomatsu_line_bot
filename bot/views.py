@@ -21,13 +21,17 @@ def index(request):
 def reply_text(reply_token, text):
     reply = random.choice(osomatsu_serif)
     payload = {
-          "replyToken":reply_token,
-          "messages":[
-                {
-                    "type":"text",
-                    "text": reply
-                }
-            ]
+        events: [
+            {
+                "replyToken":reply_token,
+                "messages":[
+                        {
+                            "type":"text",
+                            "text": reply
+                        }
+                ]
+            }
+        ]
     }
 
     requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
