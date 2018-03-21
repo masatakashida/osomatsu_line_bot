@@ -7,11 +7,6 @@ import hashlib
 import hmac
 
 channel_secret = "593f3ff1e6a03ca15b36d50d8d56af49" # Channel secret string
-#body = ... # Request body string
-hash = hmac.new(channel_secret.encode('utf-8'),
-    body.encode('utf-8'), hashlib.sha256).digest()
-signature = base64.b64encode(hash)
-# Compare X-Line-Signature request header and the signature
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -39,6 +34,11 @@ def reply_text(reply_token, text):
             }
         ]
     }
+    body = request.body # Request body string
+    hash = hmac.new(channel_secret.encode('utf-8'),
+        body.encode('utf-8'), hashlib.sha256).digest()
+    signature = base64.b64encode(hash)
+    # Compare X-Line-Signature request header and the signature
 
     requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
     return reply
