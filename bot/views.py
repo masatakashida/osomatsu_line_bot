@@ -6,13 +6,12 @@ import base64
 import hashlib
 import hmac
 
-channel_secret = "593f3ff1e6a03ca15b36d50d8d56af49" # Channel secret string
-
 from django.shortcuts import render
 from django.http import HttpResponse
 
 from load_serif import osomatsu_serif  # 先ほどのおそ松のセリフ一覧をimport
 
+#channel_secret = "593f3ff1e6a03ca15b36d50d8d56af49" # Channel secret string
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = 'ufPaV2RYTu8GHaNFJKGlWXL4fON5uKyhiulyOk7sT57wtVci1HjUQaPr0UUWjk8ktnpVlEP4qyheNcF3I6n7HIeQTTRiAzs2xTC84ir5rC+zdwknS9UjDXD5ARAWKHohRpbyaDkygicvmlRTWsAJhQdB04t89/1O/w1cDnyilFU='
 HEADER = {
@@ -44,12 +43,6 @@ def callback(request):
     for e in request_json['events']:
         reply_token = e['replyToken']  # 返信先トークンの取得
         message_type = e['message']['type']   # typeの取得
-
-        body = request.body # Request body string
-        hash = hmac.new(channel_secret.encode('utf-8'),
-            body.encode('utf-8'), hashlib.sha256).digest()
-        signature = base64.b64encode(hash)
-        # Compare X-Line-Signature request header and the signature
 
         if message_type == 'text':
             text = e['message']['text']    # 受信メッセージの取得
