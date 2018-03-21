@@ -34,11 +34,6 @@ def reply_text(reply_token, text):
             }
         ]
     }
-    body = request.body # Request body string
-    hash = hmac.new(channel_secret.encode('utf-8'),
-        body.encode('utf-8'), hashlib.sha256).digest()
-    signature = base64.b64encode(hash)
-    # Compare X-Line-Signature request header and the signature
 
     requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
     return reply
@@ -49,6 +44,12 @@ def callback(request):
     for e in request_json['events']:
         reply_token = e['replyToken']  # 返信先トークンの取得
         message_type = e['message']['type']   # typeの取得
+
+        body = request.body # Request body string
+        hash = hmac.new(channel_secret.encode('utf-8'),
+            body.encode('utf-8'), hashlib.sha256).digest()
+        signature = base64.b64encode(hash)
+        # Compare X-Line-Signature request header and the signature
 
         if message_type == 'text':
             text = e['message']['text']    # 受信メッセージの取得
