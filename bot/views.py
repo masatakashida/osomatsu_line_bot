@@ -21,15 +21,11 @@ def index(request):
 def reply_text(reply_token, text):
     reply = random.choice(osomatsu_serif)
     payload = {
-        events: [
+        "replyToken":reply_token,
+        "messages":[
             {
-                "replyToken":reply_token,
-                "messages":[
-                        {
-                            "type":"text",
-                            "text": reply
-                        }
-                ]
+                "type":"text",
+                "text": reply
             }
         ]
     }
